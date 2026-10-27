@@ -1,0 +1,10 @@
+{
+  "name":"Precios 3D",
+  "short_name":"Precios 3D",
+  "description":"Calculadora de cotizaciones para impresión 3D",
+  "start_url":"./index.html",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f1f5f9",
+  "theme_color":"#172554"
+}

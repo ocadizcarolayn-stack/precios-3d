@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#172554">
+<link rel="manifest" href="manifest.json">\n<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>Precios 3D</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f1f5f9;color:#172033;font-family:system-ui,sans-serif}
+header{background:#172554;color:white;padding:22px}header h1{margin:0}header p{margin:5px 0 0}
+main{max-width:700px;margin:auto;padding:14px}section{background:white;padding:16px;margin-bottom:14px;border-radius:14px}
+h2{font-size:18px;margin-top:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{font-size:13px;font-weight:600}input,select{width:100%;padding:10px;margin-top:5px;border:1px solid #cbd5e1;border-radius:8px;font-size:16px}
+button{border:0;border-radius:9px;padding:12px;background:#1d4ed8;color:white;font-weight:bold;font-size:15px;margin:5px 3px 0 0}
+.metric{background:#eff6ff;padding:12px;border-radius:10px;margin:7px 0}.metric strong{font-size:20px;display:block}
+small{color:#64748b}.hint{font-size:13px;color:#64748b}
+.item{border-top:1px solid #ddd;padding:10px 0}
+@media(max-width:400px){.grid{grid-template-columns:1fr 1fr}section{padding:12px}}
+</style>
+</head>
+<body>
+<header><h1>Precios 3D</h1><p>Calculadora de cotizaciones · MXN</p></header>
+<main>
+<section><h2>1. Tu impresión</h2><div class="grid">
+<label>Nombre de la figura<input id="nombre" placeholder="Ej. Figura articulada"></label>
+<label>Material<select id="material"><option>PLA</option><option>PETG</option><option>TPU</option><option>Otro</option></select></label>
+<label>Material por pieza (g)<input id="gramos" type="number" value="50" min="0" step=".1"></label>
+<label>Precio de bobina ($)<input id="bobina" type="number" value="350" min="0"></label>
+<label>Impresión (horas)<input id="horas" type="number" value="2" min="0" step=".1"></label>
+<label>Mano de obra (minutos)<input id="minutos" type="number" value="10" min="0"></label>
+<label>Cantidad de piezas<input id="cantidad" type="number" value="1" min="1"></label>
+<label>Costo de diseño por pieza ($)<input id="diseno" type="number" value="0" min="0"></label>
+</div><p class="hint">Usa los gramos y el tiempo estimado que te muestra Bambu Studio.</p></section>
+<section><h2>2. Parámetros del negocio</h2><div class="grid">
+<label>Inversión impresora ($)<input id="inversion" type="number" value="27998"></label>
+<label>Recuperación (meses)<input id="meses" type="number" value="36"></label>
+<label>Horas productivas/mes<input id="mensuales" type="number" value="150"></label>
+<label>Mano de obra por hora ($)<input id="tarifa" type="number" value="75"></label>
+<label>Consumo (kW)<input id="kw" type="number" value=".25" step=".01"></label>
+<label>Electricidad por kWh ($)<input id="luz" type="number" value="1.5" step=".01"></label>
+<label>Mantenimiento por hora ($)<input id="mantenimiento" type="number" value="2" step=".1"></label>
+<label>Reserva de fallos (%)<input id="fallos" type="number" value="8"></label>
+<label>Margen objetivo (%)<input id="margen" type="number" value="35"></label>
+<label>Comisión plataforma (%)<input id="comision" type="number" value="12"></label>
+<label>Cuota fija plataforma ($)<input id="cuota" type="number" value="0"></label>
+<label>Envío que pagas ($)<input id="envio" type="number" value="0"></label>
+</div><button onclick="guardar()">Guardar parámetros</button><button onclick="restaurar()">Restaurar valores iniciales</button></section>
+<section><h2>3. Tu cotización</h2>
+<div class="metric"><small>Costo estimado por pieza</small><strong id="costo">$0.00</strong></div>
+<div class="metric"><small>Precio sugerido venta directa</small><strong id="directo">$0.00</strong></div>
+<div class="metric"><small>Precio sugerido plataforma</small><strong id="plataforma">$0.00</strong></div>
+<div class="metric"><small>Ganancia por pieza, venta directa</small><strong id="ganancia">$0.00</strong></div>
+<div class="metric"><small>Total del pedido</small><strong id="total">$0.00</strong></div>
+<p id="detalle" class="hint"></p>
+<button onclick="guardarCotizacion()">Guardar cotización</button>
+<button onclick="compartir()">Compartir por WhatsApp</button>
+<button onclick="copiar()">Copiar cotización</button>
+<p id="estado" class="hint"></p></section>
+<section><h2>4. Historial</h2><div id="historial" class="hint">Todavía no hay cotizaciones guardadas.</div><button onclick="borrarHistorial()">Borrar historial</button></section>
+<p class="hint">Estimaciones editables. Comprueba las comisiones reales, los impuestos y las licencias comerciales de los diseños descargados.</p>
+</main>
+<script src="app.js"></script>\n<script src="service-worker-register.js"></script>
+</body></html>
