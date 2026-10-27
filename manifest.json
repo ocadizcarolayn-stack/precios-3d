@@ -8,3 +8,28 @@
   "background_color":"#f1f5f9",
   "theme_color":"#172554"
 }
+{
+  "id": "./",
+  "name": "Precios 3D",
+  "short_name": "Precios 3D",
+  "description": "Calculadora de costos y cotizaciones para impresión 3D",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
